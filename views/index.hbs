@@ -1,1 +1,9 @@
-<h1>Hello world! 這是 index</h1>
+<h1>Hello World!</h1>
+<a href="./todos/new">Create</a>
+<ul>
+  {{#each todos}}
+  <li>
+    {{this.name}}
+  </li>
+  {{/each}}
+</ul>
