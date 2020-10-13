@@ -41,6 +41,13 @@ app.post('/todos', (req, res) => {
     .then(() => res.redirect('/'))
     .catch(error => console.error(error))
 })
+app.get('/todos/:id', (req, res) => {
+  const id = req.params.id
+  return Todo.findById(id)
+    .lean()
+    .then(todo => res.render('detail', { todo }))
+    .catch(error => console.error(error))
+})
 
 app.listen(port, () => {
   console.log(`The Server is start on http://localhost:${port}`)
