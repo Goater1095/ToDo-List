@@ -62,9 +62,17 @@ app.post('/todos/:id/edit', (req, res) => {
   return Todo.findById(id)
     .then(todo => {
       todo.name = name
-      return todo.save()
+      todo.save()
     })
     .then(() => res.redirect(`/todos/${id}`))
+    .catch(error => console.error(error))
+})
+
+app.post('/todos/:id/delete', (req, res) => {
+  const id = req.params.id
+  return Todo.findById(id)
+    .then(todo => todo.remove())
+    .then(() => res.redirect('/'))
     .catch(error => console.error(error))
 })
 
