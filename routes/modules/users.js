@@ -11,6 +11,10 @@ router.post(
     successRedirect: '/',
     failureRedirect: '/users/login',
   })
+  // ,
+  // (req, res) => {
+  //   console.log(req.user);
+  // }
 );
 
 router.get('/register', (req, res) => {
@@ -41,6 +45,11 @@ router.post('/register', (req, res) => {
         .catch((err) => console.log(err));
     }
   });
+});
+
+router.get('/logout', (req, res) => {
+  req.logout();
+  res.redirect('/user/login');
 });
 
 module.exports = router;
