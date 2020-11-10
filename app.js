@@ -12,8 +12,6 @@ const bodyParser = require('body-parser');
 // express定義會自動尋找目錄的index的檔案
 const routes = require('./routes');
 
-// 呼叫 Passport 函式並傳入 app，這條要寫在路由之前
-usePassport(app);
 require('./config/mongoose');
 //set template engine
 app.engine('hbs', exhbs({ defaultLayout: 'main', extname: '.hbs' }));
@@ -29,6 +27,16 @@ app.use(
 );
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
+
+// 呼叫 Passport 函式並傳入 app，這條要寫在路由之前
+usePassport(app);
+
+app.use((req, res, next) => {
+  res.locals.isAuthenticated = req.isAuthenticated();
+  res.locals.user = req.user;
+  next();
+});
+
 app.use(routes);
 
 app.listen(port, () => {
