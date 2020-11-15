@@ -55,6 +55,7 @@ router.post('/register', (req, res) => {
         .then((salt) => bcrypt.hash(password, salt))
         .then((hash) =>
           User.create({
+            //create 不用return??
             name,
             email,
             password: hash,

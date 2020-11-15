@@ -5,9 +5,13 @@ const usePassport = require('./config/passport');
 const flash = require('connect-flash');
 const methodOverride = require('method-override');
 const app = express();
-const port = process.env.PORT || 3000;
+const PORT = process.env.PORT;
 const exhbs = require('express-handlebars');
 const bodyParser = require('body-parser');
+
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config();
+}
 
 // express定義會自動尋找目錄的index的檔案
 const routes = require('./routes');
@@ -20,7 +24,7 @@ app.set('view engine', 'hbs');
 //set use
 app.use(
   session({
-    secret: 'ThisIsMySecret',
+    secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: true,
   })
@@ -42,6 +46,6 @@ app.use((req, res, next) => {
 
 app.use(routes);
 
-app.listen(port, () => {
-  console.log(`The Server is start on http://localhost:${port}`);
+app.listen(PORT, () => {
+  console.log(`The Server is start on http://localhost:${PORT}`);
 });
