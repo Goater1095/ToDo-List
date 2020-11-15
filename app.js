@@ -4,14 +4,15 @@ const session = require('express-session');
 const usePassport = require('./config/passport');
 const flash = require('connect-flash');
 const methodOverride = require('method-override');
-const app = express();
-const PORT = process.env.PORT;
-const exhbs = require('express-handlebars');
-const bodyParser = require('body-parser');
 
 if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config();
 }
+
+const app = express();
+const PORT = process.env.PORT;
+const exhbs = require('express-handlebars');
+const bodyParser = require('body-parser');
 
 // express定義會自動尋找目錄的index的檔案
 const routes = require('./routes');
