@@ -7,26 +7,34 @@
 ![Register Page](/public/images/register.png)
 ![Home Page](/public/images/index.png)
 
+(heroku 連結:https://frozen-gorge-01845.herokuapp.com/users/login)
+
+![Login Page](/public/images/login.png)
+![Register Page](/public/images/register.png)
+![Home Page](/public/images/index.png)
+
 ### 功能描述 (features)：
 
-- 使用者可以透過"搜尋餐廳名稱"來找到特定的餐廳
-- 使用者可以透過"新增餐廳清單"來建立特定的餐廳
-- 使用者可以透過"Edit button" & "修改餐廳內容" 變更餐廳的詳細資訊
-- 使用者可以透過"Detail button"進入看餐廳的詳細資訊
-- 使用者可以透過"Delete button" & "刪除餐廳" 移除不想要的餐廳
+- 使用者須註冊才可使用
+- 使用者可以透過 Facebook Login 直接登入
+- 使用者可以在首頁透過 "Create" 新增待辦事項
+- 使用者可以在首頁看到所有待辦事項
+- 使用者可以在首頁透過 "detail" 查看單一待辦事項
+- 使用者可以在首頁透過 "edit" 編輯待辦事項，勾選方塊確認待辦事項完成
+- 使用者可以在首頁透過 "delete" 刪除待辦事項
 
 ### 安裝
 
 1.開啟終端機(Terminal)cd 到存放專案本機位置並執行:
 
 ```
-git clone https://github.com/Goater1095/Restaurant-List.git
+git clone https://github.com/Goater1095/ToDo-List.git
 ```
 
 2.初始
 
 ```
-cd Restaurant-List  //切至專案資料夾
+cd ToDo-List  //切至專案資料夾
 ```
 
 ```
@@ -52,3 +60,10 @@ npm run dev  //執行程式
 - MongoDB - Data base
 - Mongoose - ODM for MongoDB
 - Method-Override - Modify request Verb
+- bcryptjs - 密碼加密
+- connect-flash - 提示訊息
+- dotenv - 環境參數設定
+- express-session - 使用者認證相關套件
+- passport- 使用者認證相關套件
+- passport-facebook- 使用者認證相關套件
+- passport-local- 使用者認證相關套件
